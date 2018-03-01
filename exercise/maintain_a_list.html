@@ -55,7 +55,7 @@
 
     removeItem (target) {
       let self = this;
-      function findParent (node) {
+      let findParent = (node) => {
         let parent = node.parentNode;
         let root = self.el.find(item => item === parent);
         if (root) {
