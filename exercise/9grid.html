@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .grid{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 25px auto;
+      width: 300px;
+      /*height: 300px; no height core*/
+      list-style: none;
+    }
+    .item{
+      width: 100px;
+      height: 100px;
+      box-sizing: border-box;
+      line-height: 100px;
+      text-align: center;
+      border: 5px solid #ccc;
+      margin-left: -5px;
+      margin-top: -5px;
+    }
+    .item:hover{
+      border-color: red;
+      z-index: 1;
+    }
+    .item:nth-child(3n+1){
+      margin-left: 0;
+    }
+    .item:nth-child(-n+3){
+      margin-top: 0;
+      background-color: yellow;
+      /*n start from 0  and  nth-child >= 1*/
+    }
+    /*.item:nth-child(3)~.item{*/
+      /*margin-top: -15px;*/
+    /*}*/
+  </style>
+</head>
+<body>
+<ul class="grid">
+  <li class="item">1</li>
+  <li class="item">2</li>
+  <li class="item">3</li>
+  <li class="item">4</li>
+  <li class="item">5</li>
+  <li class="item">6</li>
+  <li class="item">7</li>
+  <li class="item">8</li>
+  <li class="item">9</li>
+</ul>
+</body>
+</html>
