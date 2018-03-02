@@ -15,9 +15,44 @@
       right: 0;
       background-color: #0f0;
     }
+    .header{
+      position: absolute;
+      height: 50px;
+      width: 100%;
+      background-color: red;
+    }
+    .left-right{
+      position: fixed;
+      top: 50px;
+      left:0;
+      bottom: 0;
+      right: 0;
+      display: grid;
+      background-color: #0D0A0A;
+      grid-template-rows: auto;
+      grid-template-columns: 100px auto;
+    }
+    .left{
+      background-color: #fff;
+    }
+    .right{
+      background-color: blue;
+    }
   </style>
 </head>
 <body>
-  <div class="container"></div>
+  <div class="container">
+    <header class="header">
+      50px高，宽度自适应
+    </header>
+    <section class="left-right">
+      <div class="left">
+        100px宽，高度自适应
+      </div>
+      <div class="right">
+        宽和高均自适应
+      </div>
+    </section>
+  </div>
 </body>
 </html>
