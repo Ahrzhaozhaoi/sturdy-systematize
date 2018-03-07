@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  * ①、Object构造函数，new
+  * ②、对象字面量
+  * ③、Object.create() ES5
+  * ④、Object.assign() 目标对象，源对象 ES6
+  * ⑤、工厂函数，new一个空对象，添加属性和方法，返回它
+  * ⑥、自定义构造函数，new
+  */
+
+  //缺点，代码冗余
+  var obj = new Object()//Object构造函数
+  var obj = {} //对象字面量
+
+
+  var obj = Object.create({name: 'Judy'})//es5
+  // console.log(obj.name)
+  var obj = Object.assign({},{name: 'Judy'})//es6
+  // console.log(obj.name)
+
+
+
+  // 工厂模式，new一个空对象，添加属性和方法，返回它
+  function createStudent(name){
+    var o = {}
+    o.name = name
+    o.sayName = function(){
+      console.log(this.name);
+    }
+    return o;
+  }
+  var s1 = createStudent('Judy');
+  s1.sayName()
+
+//自定义构造函数
+  function Student(name){
+    this.name = name
+    this.sayName = function(){
+      console.log(this.name);
+    }
+  }
+  var s1 = new Student('Judy');
+  s1.sayName()
+
+
+
+</script>
+</body>
+</html>

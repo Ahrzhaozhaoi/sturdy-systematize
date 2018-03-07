@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  *①、原型链 Child.prototype = new Parent()
+  *②、借用构造函数  Parent.call(this)
+  */
+
+
+  // function Parent() {
+  //   this.name = 'parent'
+  // }
+  // Parent.prototype.say = function () {
+  //   console.log(this.name)
+  // }
+  // function Child() {
+  //   this.name = 'child'
+  // }
+  // Child.prototype = new Parent()
+  // var child = new Child()
+  // child.say()
+
+
+  function Parent() {
+    this.name = 'parent'
+    this.say = function () {
+      console.log(this.name)
+    }
+  }
+  function Child(name) {
+    Parent.call(this)
+    this.name = name || 'parent'
+  }
+  var child = new Child()
+  child.say()
+
+
+
+
+</script>
+</body>
+</html>
