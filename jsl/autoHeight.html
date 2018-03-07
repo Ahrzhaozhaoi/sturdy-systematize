@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container{
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: #0f0;
+    }
+    .header{
+      position: absolute;
+      height: 50px;
+      width: 100%;
+      background-color: red;
+    }
+    .left-right{
+      position: fixed;
+      top: 50px;
+      left:0;
+      bottom: 0;
+      right: 0;
+      display: grid;
+      background-color: #0D0A0A;
+      grid-template-rows: auto;
+      grid-template-columns: 100px auto;
+    }
+    .left{
+      background-color: #fff;
+    }
+    .right{
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      50px高，宽度自适应
+    </header>
+    <section class="left-right">
+      <div class="left">
+        100px宽，高度自适应
+      </div>
+      <div class="right">
+        宽和高均自适应
+      </div>
+    </section>
+  </div>
+</body>
+</html>
