@@ -9,6 +9,7 @@
   /*
   *①、原型链 Child.prototype = new Parent()
   *②、借用构造函数  Parent.call(this)
+  *③、ES6 class Child extends Parent
   */
 
 
@@ -26,17 +27,34 @@
   // child.say()
 
 
-  function Parent() {
-    this.name = 'parent'
-    this.say = function () {
+  // function Parent() {
+  //   this.name = 'parent'
+  //   this.say = function () {
+  //     console.log(this.name)
+  //   }
+  // }
+  // function Child(name) {
+  //   Parent.call(this)
+  //   this.name = name || 'parent'
+  // }
+  // var child = new Child()
+  // child.say()
+
+
+  class Parent {
+    constructor (name) {
+      this.name = name || 'parent'
+    }
+    say() {
       console.log(this.name)
     }
   }
-  function Child(name) {
-    Parent.call(this)
-    this.name = name || 'parent'
+  class Child extends Parent {
+    say () {
+      alert('child')
+    }
   }
-  var child = new Child()
+  var child = new Child('child')
   child.say()
 
 
