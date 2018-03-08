@@ -87,6 +87,11 @@
   * @return {[type]}          [description]
   */
  util.jsonp = function (url, onsuccess, onerror, charset) {
+     /**
+      *核心代码：动态创建script标签，<script src="http://www.abc.com/?data=name&callbackName=callbackName"></script>
+      *         注册全局函数callbackName
+      *
+      */
      var callbackName = util.getName('tt_player');
      window[callbackName] = function () {
          if (onsuccess && util.isFunction(onsuccess)) {

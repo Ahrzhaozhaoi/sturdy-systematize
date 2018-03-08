@@ -9,6 +9,7 @@
       /**
       *继承的本质就是原型链
       */
+
       /**
        * 类的声明
        */
@@ -71,7 +72,8 @@
 
       /**
        * 组合方式：组合构造函数继承和原型链继承
-       * 核心代码：Parent.call(this)  Child.prototype = new Parent()
+       * 核心代码：Parent.call(this)
+       *          Child.prototype = new Parent()
        * 缺点：实例化子类时，父类的构造函数执行了两次
        */
       function Parent3 () {
