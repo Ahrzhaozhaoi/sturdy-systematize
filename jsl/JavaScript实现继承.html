@@ -7,8 +7,8 @@
 <body>
 <script>
   /*
-  *①、原型链 Child.prototype = new Parent()
-  *②、借用构造函数  Parent.call(this)
+  *①、原型链 Child.prototype = new Parent() ，该原型对象会被污染
+  *②、借用构造函数  Parent.call(this) ，无法继承父类原型对象上的方法
   *③、ES6 class Child extends Parent
   */
 
