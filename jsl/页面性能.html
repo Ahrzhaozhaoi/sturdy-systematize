@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+/**
+ * 军规
+ * 1.利用浏览器缓存，
+ *    缓存的分类：
+ *      强缓存： Expires:绝对时间 (下发的是服务器时间，比较时用的浏览器时间)
+ *              Cache-Control：相对时间 max-age = 3600 （s）（优先级比上者高）
+ *      协商缓存：Last-Modified（服务器下发）
+*                If-Modified-Since（请求携带的） 绝对时间
+ *
+*                Etag(下发，一个哈希)  //可能时间变了，内容不变
+*                If-None-Match（上传）
+ *    缓存的原理
+ * 2.资源压缩合并，减少http请求，开启gzip压缩
+ * 3.非核心代码异步加载，
+ *    异步加载的方式：
+ *      动态脚本加载：document.createElement('script')
+ *      defer（延迟）: 在html加载完后，多个会按加载顺序依次执行
+ *      async: 在加载完成后立即执行，执行顺序与加载顺序无关
+ *    异步加载的区别
+ * 4.使用CDN
+ * 5.预解析DNS
+ *  <link rel="dns-prefetch" href="//host_name.com">
+ *  <meta http-equiv="x-dns-prefetch-control" content="on">
+ *    强制打开https关闭的a标签预解析
+ *
+ */
+</script>
+</body>
+</html>
