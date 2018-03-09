@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * 数据类型
+   *
+   *
+   * 显式类型转换
+   *
+   * Number
+   *  字符串 => （比parseInt严格，只能纯数值）数字，NaN，空字符转为0
+   *  布尔值 => true转1，false转0
+   *  undefined => NaN
+   *  null => 0
+   *  对象类型 => 先调用obj.valueOf(),
+   *            若返回值类型，直接Number
+   *            若返回引用类型，调用toString，
+   *              若返回值类型，Number
+   *              若返回引用类型，报错
+   *
+   * String
+   *  值类型都加引号
+   *  数值 =>字符串
+   *  true => 'true'   false => 'false'
+   *  undefined => 'undefined'
+   *  null => 'null'
+   *  对象类型 ： 先toString，
+   *            若返回值类型，String
+   *            若返回引用类型，valueOf
+   *              若返回值，String
+   *              若返回引用类型，报错
+   *
+   *
+   */
+      // 先调用toString方法，如果toString方法返回的是原始类型的值，则对该值使用String方法;
+      // 如果toString方法返回的是复合类型的值，再调用valueOf方法，如果valueOf方法返回的是原始类型的值，则对该值使用String方法
+  var b = {
+        b: 1,
+        toString: function () {
+          return {
+            b: 2,
+          };
+        },
+        valueOf: function () {
+          return 'b';
+        },
+      };
+  console.log('b', String(b));
+  /**
+   * Boolean
+   *  undefined/null/-0/+0/NaN/''  => false
+   *
+   */
+
+  /**
+   * 隐式类型转换：
+   * 四则运算，判断语句，console.log，alert
+   */
+  console.log('[]+[]', []+[])
+  console.log('[]+{}', []+{})
+  console.log('{}+[]', {}+[]) //{}为空代码块，对[]求正，0
+  console.log('{}+{}', {}+{}) //"[object Object][object Object]"，eval()  firefox为NaN
+  console.log('true+true', true + true)
+  console.log('1+{a:1}', 1 + {a: 1})
+</script>
+</body>
+</html>
