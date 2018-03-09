@@ -48,11 +48,32 @@
    *
    *
    * HTTP状态码：
-   *
+   *   1xx:指示信息-请求已接收，继续处理
+   *   2xx:成功-请求已被成功接收
+   *   3xx：重定向-还需更进一步的操作才能完成请求
+   *   4xx：客户端错误-请求有语法错误或无法实现
+   *   5xx：服务器错误-服务器未能实现合法的请求
+   *   200 OK：客户端请求成功
+   *   206 Partial Content：客户端发送了一个
+   *      带有Range头的GET请求,服务器完成了它（video，audio）
+   *   301 Moved Permanently: 永久重定向，请求的页面转移至新的的url
+   *   302 Found：临时重定向
+   *   304 Not Modified：告诉客户端利用缓存
+   *   400 Bad Request：客户端请求有语法错误
+   *   401 Unauthorized： 未授权
+   *   403 Forbidden：禁止访问
+   *   404 Not Found：请求资源不存在
+   *   500 Internal Server Error：服务器错误
+   *   503 Server Unavailable: 服务器临时宕机或过载
    *
    * 什么是持久连接
-   *
-   * 什么是管线化
+   *    1.0版本不支持，1.1版本才支持，Keep-Alive，客户端到服务端的连接保持有效，避免重新建立连接
+   *    req1=>res1 => req2=>res3 ...
+   * 什么是管线化(请求与响应打包一次传输)
+   *    req1=>req2 => res1=>res2
+   *    通过持久连接完成，仅http/1.1支持
+   *    只要get和head才可管线化，post有所限制
+   *    初次连接时不应管线化，因为服务端不一定支持管线化
    */
 </script>
 </body>
