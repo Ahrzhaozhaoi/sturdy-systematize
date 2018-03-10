@@ -38,8 +38,10 @@
    *   get请求会被浏览器主动缓存，post需要手动设置才能缓存
    *   post相对安全（用网络嗅探器可找到）
    *   get请求被浏览器回退（back）时是无害的，post会再次提交
+   *
    *   get的url可被收藏，post不可以
    *   get只支持url编码，post支持多种
+   *
    *   get参数通过url传递，post放在请求主体
    *   get参数有长度限制（2kb（超出会被截断），不同浏览器限制不同），post没有
    *   get参数有历史记录，post没有（统一改为post防csrf）
