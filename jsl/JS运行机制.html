@@ -2,13 +2,21 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>js运行机制</title>
+  <title>JavaScript运行机制</title>
 </head>
 <body>
 <script type="text/javascript">
   /**
    *js单线程：在同一时间只能做一件事情
-   * 任务队列（实现单线程）：同步任务先执行，异步任务挂起
+   *
+   * 为什么是单线程：其用途(与用户互动，操作DOM)决定
+   *    否则会带来很复杂的同步问题
+   *    假设同一时刻，一个线程某DOM节点添加内容，
+   *   另一线程删除该节点，浏览器该以哪个线程为准
+   *
+   * 任务队列（实现单线程）：
+   *    同步任务在主线程上先排队执行，
+   *    异步任务在任务队列挂起
    */
   // console.log(1);
   // setTimeout(function () {
