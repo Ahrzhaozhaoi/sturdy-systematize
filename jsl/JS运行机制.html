@@ -7,17 +7,47 @@
 <body>
 <script type="text/javascript">
   /**
-   *js单线程：在同一时间只能做一件事情
+   *what:js单线程：在同一时间只能做一件事情
    *
-   * 为什么是单线程：其用途(与用户互动，操作DOM)决定
+   *why:为什么是单线程：其用途(与用户互动，操作DOM)决定
    *    否则会带来很复杂的同步问题
    *    假设同一时刻，一个线程某DOM节点添加内容，
    *   另一线程删除该节点，浏览器该以哪个线程为准
    *
-   * 任务队列（实现单线程）：
-   *    同步任务在主线程上先排队执行，
-   *    异步任务在任务队列挂起
+   *how:实现单线程任务队列(ECS,TQ)：
+   *    ①同步任务在主线程上先排队执行,形成执行环境栈(ECS execution context stack)，
+   *    ②异步任务的运行有了结果,就在任务队列(task queue先进先出)放入事件,暂时挂起
+   *    ③ECS同步任务执行完,任务队列里的事件(callback)进入执行栈开始执行
+   *    ④重复以上三步
+   *
+   *Event Loop: 主线程从任务队列读取事件并循环的机制
+   *
+   * setTimeout(fn,0):ECS和TQ执行完才尽快执行 H5规定不低于4ms,老版本10ms
+   * DOM重新渲染16ms执行一次,所以
+   * requestAnimationFrame()的效果要好于setTimeout()
+   *
+   *
+   * NodeJS运行机制:
+   * V8解析JS脚本
+   * 解析后的代码调用node API
+   * libuv负责node API执行,分配不同的任务给不同的线程,
+   *    形成事件循环,异步方式返回结果给V8
+   * V8将结果返回给客户
+   *
+   * process.nextTick,下一次主线程读取任务队列之间触发回调函数
+   * setImmediate方法则是在当前"任务队列"的尾部添加事件
    */
+  process.nextTick(function A() {
+    console.log(1);
+    process.nextTick(function B(){console.log(2);});
+  });
+
+  setTimeout(function timeout() {
+    console.log('TIMEOUT FIRED');
+  }, 0)
+  // 1
+  // 2
+  // TIMEOUT FIRED
   // console.log(1);
   // setTimeout(function () {
   //     console.log(2);
