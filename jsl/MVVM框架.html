@@ -7,34 +7,34 @@
 <body>
 <script>
 
-  /**  别背题，要沟通，别着急，要自然
-   * 1.了解MVVM框架吗
-   *
-   *
-   * 2.谈谈对MVVM的认识
-   *   先聊MVC
-   *    View:展现
-   *    ViewModel：核心枢纽
-   *    Model:服务器上的某块业务逻辑
-   * 3.双向绑定的原理
-   *    Object.defineProperty //es5 返回新对象 手写
-   *    configurable: true(默认为false)
-   *    reflect.defineProperty//ES6 返回bool值
-   * 4.设计模式
-   *    观察者模式
-   *    Data-View : ViewModel
-   *    Observer:监听Data变化，通知Dep(观察者列表对象)，
-   *            就是Object.defineProperty(),会触发set，通知Dep
-   *    Dep:(触发update函数)回调Watcher
-   *    Watcher：订阅Dep(往观察这列表增加内容，传入update)，回调时更新View
-   *
-   * 5.生命周期
-   *  beforeCreate created
-   *  beforeMount mounted（性能监控放在此处）
-   *  beforeUpdate updated（测某一点的性能放在此处）
-   *  beforeDestroy destroyed
-   * 6.源码
-   */
+/**  别背题，要沟通，别着急，要自然
+* 1.了解MVVM框架吗
+*
+*
+* 2.谈谈对MVVM的认识
+*   先聊MVC
+*    View:展现
+*    ViewModel：核心枢纽
+*    Model:服务器上的某块业务逻辑
+* 3.双向绑定的原理
+*    Object.defineProperty //es5 返回新对象 手写
+*    configurable: true(默认为false)
+*    reflect.defineProperty//ES6 返回bool值
+* 4.设计模式
+*    观察者模式
+*    Data-View : ViewModel
+*    Observer:监听Data变化，通知Dep(观察者列表对象)，
+*            就是Object.defineProperty(),会触发set，通知Dep
+*    Dep:(触发update函数)回调Watcher
+*    Watcher：订阅Dep(往观察这列表增加内容，传入update)，回调时更新View
+*
+* 5.生命周期
+*  beforeCreate created
+*  beforeMount mounted（性能监控放在此处）
+*  beforeUpdate updated（测某一点的性能放在此处）
+*  beforeDestroy destroyed
+* 6.源码
+*/
 </script>
 </body>
 </html>

@@ -8,43 +8,43 @@
   <title>Document</title>
 </head>
 <body>
-  <script>
-    let isPrime = (function () {
-      let hash = {}
-      return function (num) {
-        
-        if(!isNaN(num) && num >=1 && parseInt(num) === num ) {
-          if (num <= 3) {
-            hash[num] = true
-            return true
-          }
-          else if (hash[num] !== undefined) {
-            console.log('不用遍历')
-            return hash[num]
-          } else {
-            if (num % 2 === 0) {
+<script>
+let isPrime = (function () {
+  let hash = {}
+  return function (num) {
+
+    if(!isNaN(num) && num >=1 && parseInt(num) === num ) {
+      if (num <= 3) {
+        hash[num] = true
+        return true
+      }
+      else if (hash[num] !== undefined) {
+        console.log('不用遍历')
+        return hash[num]
+      } else {
+        if (num % 2 === 0) {
+          hash[num] = false
+          return false
+        } else {
+          console.log('用遍历')
+          for (let i=3;i<Math.sqrt(num);i+=2) {
+            if (num % i === 0) {
               hash[num] = false
               return false
-            } else {
-              console.log('用遍历')
-              for (let i=3;i<Math.sqrt(num);i+=2) {
-                if (num % i === 0) {
-                  hash[num] = false
-                  return false
-                }
-              }
-              hash[num] = true
-              return true
             }
           }
-        } else {
-          return new Error('请输入正整数')
+          hash[num] = true
+          return true
         }
       }
-    })()
-    console.log(isPrime(1.1))
-    console.log(isPrime(117))
-    console.log(isPrime(117))
-  </script>
+    } else {
+      return new Error('请输入正整数')
+    }
+  }
+})()
+console.log(isPrime(1.1))
+console.log(isPrime(117))
+console.log(isPrime(117))
+</script>
 </body>
 </html>

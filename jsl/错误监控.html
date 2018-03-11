@@ -6,35 +6,37 @@
 </head>
 <body>
 <script>
-  /**
-   * 错误分类：
-   *  1.代码错误
-   *  2.资源加载错误
-   *
-   *  代码错误捕获：
-   *  1.try...catch
-   *  2.window.onerror
-   *
-   *  资源加载错误（不会冒泡）捕获：
-   *  1.（标签）object.onerror
-   *  2.performance.getEnties()
-   *  (高级浏览器才有，返回一个数组，可获取需加载的资源的个数
-   *  再减去document.getElementByTagName('img')的length)
-   *  3.Error事件捕获（在捕获阶段拿到错误）
-   *    window.addEventListener('error', e=> {
-   *      console.log('捕获',e)
-   *    },true)
-   *
-   *  跨域的js运行错误捕获：
-   *   1.在script增加crossorign属性
-   *   2.设置资源响应头：Access-Control-Allow-Orign:*
-   *
-   *   上报错误的基本原理：
-   *   1.利用Image对象上报
-   *      (new Image()).src='接口'
-   *   2.ajax上报
-   *
-   */
+/**
+* 错误分类：
+*  1.代码错误:
+*     SyntaxError,RangeError,URIError
+*     Uncaught ReferenceError,TypeError,EvalError
+*  2.资源加载错误
+*
+*  代码错误捕获：
+*  1.try...catch
+*  2.window.onerror
+*
+*  资源加载错误（不会冒泡）捕获：
+*  1.（标签）dom.onerror
+*  2.performance.getEnties()
+*  (高级浏览器才有，返回一个数组，可获取需加载的资源的个数
+*  再减去document.getElementByTagName('img')的length)
+*  3.Error事件捕获（在捕获阶段拿到错误）
+*    window.addEventListener('error', e=> {
+*      console.log('捕获',e)
+*    },true)
+*
+*  跨域的js运行错误捕获：
+*   1.在script增加crossorign属性
+*   2.设置资源响应头：Access-Control-Allow-Orign:*
+*
+*   上报错误的基本原理：
+*   1.利用Image对象上报
+*      (new Image()).src='接口'
+*   2.ajax上报
+*
+*/
 </script>
 </body>
 </html>

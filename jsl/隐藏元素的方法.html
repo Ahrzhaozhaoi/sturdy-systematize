@@ -6,22 +6,23 @@
 </head>
 <body>
   <script>
-    /**
-     * 1、visibility：hidden
-     * 2、height: 0；overflow：hidden;
-     * 3、width：0; overflow：hidden;
-     * 4、opacity: 0; 只有它可以点击
-     * 5、position: absolut;left:-99999px;
-     * 6、display: none;
-     * 7、{
-        zoom: 0.001;
-        -moz-transform: scale(0);
-        -webkit-transform: scale(0);
-        -o-transform: scale(0);
-        transform: scale(0);
-        IE6/IE7/IE9不占据空间，IE8/FireFox/Chrome/Opera占据空间。都无法点击
-        }
-     */
+/**
+* 1、visibility：hidden
+* 2、height: 0；overflow：hidden;
+* 3、width：0; overflow：hidden;
+* 4、opacity: 0; 只有它可以点击
+* 5、position: absolut;left:-99999px;
+* 6、display: none;
+* 7、{
+  zoom: 0.001;
+  -moz-transform: scale(0);
+  -webkit-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  IE6/IE7/IE9不占据空间，IE8/FireFox/Chrome/Opera占据空间。都无法点击
+  }
+*8.z-index
+*/
   </script>
 </body>
 </html>

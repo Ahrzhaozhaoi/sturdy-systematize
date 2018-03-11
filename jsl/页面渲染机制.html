@@ -6,31 +6,34 @@
 </head>
 <body>
 <script>
-  /**（会者不难，难者不会）
-   * DOCTYPE
-   *  （DTD document type definition）
-   *  html5:<!DOCTYPE html>
-   *  html4: strict（不能包括弃用的和展示性元素） loose模式
-   *
-   *
-   * 浏览器渲染过程
-   *  DOM Tree + CSSOM Tree ==Attachment>> Render Tree ==>Layout计算 =>Painting=>display
-   *
-   * 重排 Reflow：DOM树中每个元素都有自己的盒子模型，浏览器根据样式计算并将元素放到相应的位置的过程叫reflow
-   *      触发条件：增删改DOM节点
-   *               移动DOM位置
-   *               修改样式
-   *               Resize窗口（移动端没有），滚动
-   *               修改网页默认字体
-   *
-   * 重绘 Repaint：绘制页面内容
-   *      触发条件：DOM改动
-   *               CSS改动
-   *      减少Repaint：documentFragment
-   *
-   * 布局 Layout
-   *
-   */
+/**（会者不难，难者不会）
+* DOCTYPE
+*  （DTD document type definition）
+*  html5:<!DOCTYPE html>
+*  html4: strict（不能包括弃用的和展示性元素） loose模式
+*
+*
+* 浏览器渲染过程
+*  DOM Tree + CSSOM Tree ==Attachment>>
+*  Render Tree ==>
+*  Layout计算 =>Painting=>display
+*
+* 重排 Reflow：DOM树中每个元素都有自己的盒子模型，
+* 浏览器根据样式计算并将元素放到相应的位置的过程叫reflow
+*      触发条件：增删改DOM节点
+*               移动DOM位置
+*               修改样式
+*               Resize窗口（移动端没有），滚动
+*               修改网页默认字体
+*
+* 重绘 Repaint：绘制页面内容
+*      触发条件：DOM改动
+*               CSS改动
+*      减少Repaint：documentFragment
+*
+* 布局 Layout
+*
+*/
 </script>
 </body>
 </html>
