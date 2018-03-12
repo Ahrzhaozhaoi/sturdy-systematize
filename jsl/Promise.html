@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+/**
+*原理：三个状态，两种可能
+*     pending(待定)=>fulfilled(履行)/
+*     pending=>rejected(拒绝)
+*
+*因为promise构造函数中通常都是异步的，
+*所以then先于resolve和reject执行，
+*promise内部有一个存储fulfilled时调用函数的数组
+*和存储rejected时调用函数的数组
+*then一般接收成功和失败两个回调函数
+*当promise状态为fullfilled时，
+*把resolve(value)中的value传给调用的函数
+*当promise状态为rejected时，
+*把reject(reason)中的reason传给调用的函数
+*/
+var p = new Promise(function(resolve, reject){
+  resolve(5)
+}).then(function(value){
+  console.log(value) //5
+})
+
+var p1 = new Promise(function(resolve, reject){
+  reject(new Error('错误'))
+}).then(function(value){
+  console.log(value)
+}, function(reason){
+  console.log(reason) //Error: 错误(…)
+})
+</script>
+<!--https://segmentfault.com/a/1190000007678185-->
+</body>
+</html>

@@ -5,6 +5,7 @@
   <title>Title</title>
 </head>
 <body>
+<!--http://www.html-js.com/article/2400-->
   <script>
 /**
 * 关键词：设备像素（物理像素）
@@ -24,11 +25,16 @@
 *    设备能控制显示的最小单位，显示器上的一个个点
 * 设备独立像素（密度无关像素）：计算机坐标系中的一个点
 * CSS像素：逻辑上衡量像素的单位，抽象的不是实际存在的
+* 设备像素比率（Device Pixel Ratio，DPR）：
+*   物理像素与逻辑像素（px）的对应关系
+* 分辨率（Resolution）：屏幕区域的宽高所占像素数
 *
 * PPI（pixel per inch）/像素密度（pixel density）：
 *    每英寸有多少个像素点（物理像素）
 *PPI = sqrt(xp*xp+yp*yp)/inch
 *         横向物理像素 纵向物理像素 / 屏幕尺寸
+*单位英寸像素数（Pixel Per Inch，PPI）：
+*  现实世界的一英寸内像素数，决定了屏幕的显示质量
 *
 * 设备独立像素（DIP，device-independent pixel，density-independent pixel）
 *      独立于设备的用于逻辑上衡量像素的单位
@@ -36,7 +42,20 @@
 * 一个设备光点可以对应一个CSS 像素（PPI = 160时）；
 *  一个设备光点可以对应多个CSS 像素（缩小）；
 *  一个CSS像素可以对应多个设备光点（放大）
+*
+*  动态写meta标签
 */
+var metaEl = doc.createElement('meta');
+var scale = isRetina ? 0.5:1;
+metaEl.setAttribute('name', 'viewport');
+metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+if (docEl.firstElementChild) {
+  document.documentElement.firstElementChild.appendChild(metaEl);
+} else {
+  var wrap = doc.createElement('div');
+  wrap.appendChild(metaEl);
+  documen.write(wrap.innerHTML);
+}
   </script>
 </body>
 </html>
