@@ -6,84 +6,90 @@
 </head>
 <body>
 <script type="text/javascript">
-  /**
-   *what:js单线程：在同一时间只能做一件事情
-   *
-   *why:为什么是单线程：其用途(与用户互动，操作DOM)决定
-   *    否则会带来很复杂的同步问题
-   *    假设同一时刻，一个线程某DOM节点添加内容，
-   *   另一线程删除该节点，浏览器该以哪个线程为准
-   *
-   *how:实现单线程任务队列(ECS,TQ)：
-   *    ①同步任务在主线程上先排队执行,形成执行环境栈(ECS execution context stack)，
-   *    ②异步任务的运行有了结果,就在任务队列(task queue先进先出)放入事件,暂时挂起
-   *    ③ECS同步任务执行完,任务队列里的事件(callback)进入执行栈开始执行
-   *    ④重复以上三步
-   *
-   *Event Loop: 主线程从任务队列读取事件并循环的机制
-   *
-   * setTimeout(fn,0):ECS和TQ执行完才尽快执行 H5规定不低于4ms,老版本10ms
-   * DOM重新渲染16ms执行一次,所以
-   * requestAnimationFrame()的效果要好于setTimeout()
-   *
-   *
-   * NodeJS运行机制:
-   * V8解析JS脚本
-   * 解析后的代码调用node API
-   * libuv负责node API执行,分配不同的任务给不同的线程,
-   *    形成事件循环,异步方式返回结果给V8
-   * V8将结果返回给客户
-   *
-   * process.nextTick,下一次主线程读取任务队列之间触发回调函数
-   * setImmediate方法则是在当前"任务队列"的尾部添加事件
-   */
-  process.nextTick(function A() {
-    console.log(1);
-    process.nextTick(function B(){console.log(2);});
-  });
+/**
+*what:js单线程：在同一时间只能做一件事情
+*
+*why:为什么是单线程：其用途(与用户互动，操作DOM)决定
+*    否则会带来很复杂的同步问题
+*    假设同一时刻，一个线程某DOM节点添加内容，
+*   另一线程删除该节点，浏览器该以哪个线程为准
+*
+*how:实现单线程任务队列(ECS,TQ)：
+*    ①同步任务在主线程上先排队执行,形成执行环境栈(ECS execution context stack)，
+*    ②异步任务的运行有了结果,就在任务队列(task queue先进先出)放入事件,暂时挂起
+*    ③ECS同步任务执行完,任务队列里的事件(callback)进入执行栈开始执行
+*    ④重复以上三步
+*
+*Event Loop: 主线程从任务队列读取事件并循环的机制
+*
+* setTimeout(fn,0):ECS和TQ执行完才尽快执行 H5规定不低于4ms,老版本10ms
+* DOM重新渲染16ms执行一次,所以
+* requestAnimationFrame()的效果要好于setTimeout()
+*
+*
+* 目前 JS 对于异步的解决方案有哪些
+* deferred （jQuery 或者 zepto 中）
+* Promise（ES6 或者第三方库，如 q.js bluebird.js）
+* Generator（从 koa 升级 2.x 之后已经不再常用）
+* async/await （ES7 草案）
+*
+* NodeJS运行机制:
+* V8解析JS脚本
+* 解析后的代码调用node API
+* libuv负责node API执行,分配不同的任务给不同的线程,
+*    形成事件循环,异步方式返回结果给V8
+* V8将结果返回给客户
+*
+* process.nextTick,下一次主线程读取任务队列之间触发回调函数
+* setImmediate方法则是在当前"任务队列"的尾部添加事件
+*/
+process.nextTick(function A() {
+console.log(1);
+process.nextTick(function B(){console.log(2);});
+});
 
-  setTimeout(function timeout() {
-    console.log('TIMEOUT FIRED');
-  }, 0)
-  // 1
-  // 2
-  // TIMEOUT FIRED
+setTimeout(function timeout() {
+console.log('TIMEOUT FIRED');
+}, 0)
+// 1
+// 2
+// TIMEOUT FIRED
 
 
-  // console.log(1);
-  // setTimeout(function () {
-  //     console.log(2);
-  // }, 0);
-  // console.log(3);
-  // console.log(4);
-  //
-  // console.log('A');
-  // setTimeout(function () {
-  //     console.log('B');
-  // }, 0);
-  // while (1) {
-  //  同步的死循环
-  // }
-  //
-  for (var i = 0; i < 4; i++) {
-    setTimeout(function () {
-      console.log(i);
-    }, 1000);
-  }
-  //4个4
-  /**
-   *for循环是同步任务
-   *
-   *
-   * 异步队列执行的时间：
-   *    浏览器有个timer模块，异步函数体先放入timer模块中
-   *    到时间后（0其实是4ms），timer模块把异步函数体扔到异步队列中
-   * 事件循环（event loop）：
-   *    运行栈：执行同步任务，同步任务执行完后再去异步任务队列中取出函数体，并执行异步任务
-   *    什么时候开启异步任务：setTimeout、setInterval
-   *                        DOM事件
-   *                        ES6中Promise
-   */
+// console.log(1);
+// setTimeout(function () {
+//     console.log(2);
+// }, 0);
+// console.log(3);
+// console.log(4);
+//
+// console.log('A');
+// setTimeout(function () {
+//     console.log('B');
+// }, 0);
+// while (1) {
+//  同步的死循环
+// }
+//
+for (var i = 0; i < 4; i++) {
+setTimeout(function () {
+  console.log(i);
+}, 1000);
+}
+//4个4
+/**
+*for循环是同步任务
+*
+*
+* 异步队列执行的时间：
+*    浏览器有个timer模块，异步函数体先放入timer模块中
+*    到时间后（0其实是4ms），timer模块把异步函数体扔到异步队列中
+* 事件循环（event loop）：
+*    运行栈：执行同步任务，同步任务执行完后再去异步任务队列中取出函数体，并执行异步任务
+*    什么时候开启异步任务：setTimeout、setInterval
+*                        DOM事件
+*                        ES6中Promise
+*/
 
 </script>
 </body>
