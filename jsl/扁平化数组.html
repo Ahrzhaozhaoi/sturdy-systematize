@@ -27,7 +27,9 @@ function flat (array) {
   each(array);
   return result.join(',');
 }
-// 方法二：toString（格式转换） return arr + '';
+// 方法二：toString（格式转换）
+// 原型方法toString,valueOf：return this.join(',')
+// return arr + '';
 
 var flag = function (arr) {
   let toString = Array.prototype.toString;

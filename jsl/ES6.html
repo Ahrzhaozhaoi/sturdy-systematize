@@ -50,29 +50,6 @@
 * ②如果要迭代的对象的变量值为null或undefined，
 * for-in语句会抛出错误
 *
-*阻止冒泡的方法，阻止默认事件的方法(兼容IE)
-*阻止冒泡的方法：w3c的方法是e.stopPropagation()，
-*IE则是使用e.cancelBubble = true；
-*阻止默认事件的方法：w3c的方法是e.preventDefault()，
-*IE则是使用e.returnValue = false;
-*
- * .DOM操作——怎样添加、移除、移动、复制、创建和查找节点？
-*创建新节点
-*createDocumentFragment() // 创建一个DOM片段
-*createElement() // 创建一个具体的元素
-*createTextNode() // 创建一个文本节点
-*
-*添加、移除、替换、插入
-*appendChild()
-*removeChild()
-*replaceChild()
-*insertBefore() // 在已有的子节点前插入一个新的子节点
-*
-*查找
-*getElementsByTagName() // 通过标签名称
-*getElementsByName() // 通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)
-*getElementById() // 通过元素Id，唯一性
-*
 */
 </script>
 </body>
