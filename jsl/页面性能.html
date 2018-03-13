@@ -8,34 +8,36 @@
 <script>
 /**
 * 军规
- *
- * #让浏览器优先使用Edge或者chrome
- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
- #让双核浏览器优先使用chrome内核
- <meta name="renderer" content="webkit">
- #dns预解析
- <link rel="dns-prefetch" href="//static.360buyimg.com">
- #script异步加载 async
+*
+* #让浏览器优先使用Edge或者chrome
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+#让双核浏览器优先使用chrome内核
+<meta name="renderer" content="webkit">
+#dns预解析
+<link rel="dns-prefetch" href="//static.360buyimg.com">
+#script异步加载 async
 
- * 非HTTP协议定义的缓存机制:
- *  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+* 非HTTP协议定义的缓存机制:
+*  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 * 1.利用浏览器缓存，
 *    缓存的分类：
-*      强缓存： Expires:绝对时间 (下发的是服务器时间，比较时用的浏览器时间)
-*              Cache-Control：相对时间 max-age = 3600 （s）（优先级比上者高）
-*      协商缓存：Last-Modified（服务器下发）
-*               If-Modified-Since（请求携带的） 绝对时间
+*强缓存： Expires:绝对时间
+*             (下发的是服务器时间，比较时用的浏览器时间)
+*        Cache-Control：相对时间 max-age = 3600 （s）
+*          （优先级比上者高）
+*协商缓存：Last-Modified（服务器下发）
+*         If-Modified-Since（请求携带的） 绝对时间
 *
-*               Etag(下发，一个哈希)  //可能时间变了，内容不变
-*               If-None-Match（上传）
-*    缓存的原理
+*         Etag(下发，一个哈希)  //可能时间变了，内容不变
+*         If-None-Match（上传）
+*缓存的原理
 * 2.资源压缩合并，减少http请求，开启gzip压缩
 * 3.非核心代码异步加载，
-*    异步加载的方式：
-*      动态脚本加载：document.createElement('script')
-*      defer（延迟）: 在html加载完后，多个会按加载顺序依次执行
-*      async: 在加载完成后立即执行，执行顺序与加载顺序无关
-*    异步加载的区别
+*异步加载的方式：
+*  动态脚本加载：document.createElement('script')
+*  defer（延迟）: 在html加载完后，多个会按加载顺序依次执行
+*  async: 在加载完成后立即执行，执行顺序与加载顺序无关
+*异步加载的区别
 * 4.使用CDN
 * 5.预解析DNS prefetch
 *  <link rel="dns-prefetch" href="//host_name.com">
