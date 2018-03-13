@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+/**
+* https://www.cnblogs.com/sker/p/5474591.html
+* ES6引入了一种新的原始数据类型Symbol，表示独一无二的值
+*Symbol函数前不能使用new命令，否则会报错。
+* 这是因为生成的Symbol是一个原始类型的值，不是对象
+* Symbol值作为对象属性名时，不能用点运算符
+* 只能a[mySymbol]
+* var mySymbol = Symbol();
+*var a = {};
+*a[mySymbol] = 'Hello!';
+*
+* 因为引用计数产生的内存泄漏，在ES6中的解决办法是什么？
+*ES6 考虑到了这一点，推出了两种新的数据结构：
+*WeakSet 和 WeakMap。它们对于值的引用都是不计入垃圾回收机制的，
+* 所以名字里面才会有一个”Weak”，表示这是弱引用。
+*
+* 交换a和b的值：
+* a = a+ b
+* b = a-b
+* a = a-b
+*
+* a^=b
+* b^=a
+* a^=b
+*
+* a = [b,b=a][0]
+*
+* [a,b] = [b,a] //解构
+*
+* a = [a,b];
+* b = a[0];
+* a = a[1];
+*
+* a = {a:b,b:a};
+*b = a.b;
+*a = a.a;
+*
+* for-in的缺点 顺序，报错
+* for-in是一种精准的迭代语句，可以用来枚举对象的属性。
+* ①ECMAScript对象的属性没有顺序，
+* 因此通过for-in循环输出的属性名的顺序是不可预测的。
+* ②如果要迭代的对象的变量值为null或undefined，
+* for-in语句会抛出错误
+*
+*阻止冒泡的方法，阻止默认事件的方法(兼容IE)
+*阻止冒泡的方法：w3c的方法是e.stopPropagation()，
+*IE则是使用e.cancelBubble = true；
+*阻止默认事件的方法：w3c的方法是e.preventDefault()，
+*IE则是使用e.returnValue = false;
+*
+ * .DOM操作——怎样添加、移除、移动、复制、创建和查找节点？
+*创建新节点
+*createDocumentFragment() // 创建一个DOM片段
+*createElement() // 创建一个具体的元素
+*createTextNode() // 创建一个文本节点
+*
+*添加、移除、替换、插入
+*appendChild()
+*removeChild()
+*replaceChild()
+*insertBefore() // 在已有的子节点前插入一个新的子节点
+*
+*查找
+*getElementsByTagName() // 通过标签名称
+*getElementsByName() // 通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)
+*getElementById() // 通过元素Id，唯一性
+*
+*/
+</script>
+</body>
+</html>
