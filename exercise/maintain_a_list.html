@@ -40,32 +40,79 @@
 </ul>
 <script>
   class List {
-    constructor(sel) {
+    constructor(sel){
       this.el = Array.from(document.querySelectorAll(sel))
-      let self = this
       this.el.forEach(item => {
-        item.addEventListener('click', e => {
+        item.addEventListener('click', (e) => {
           if (e.target.className.indexOf('del') > -1) {
-             console.log('e.target', e.target)
-            self.removeItem.call(self, e.target)
+            this.removeItem(e.target)
           }
         })
       })
     }
-
-    removeItem (target) {
-      let self = this;
-      let findParent = (node) => {
-        let parent = node.parentNode;
-        let root = self.el.find(item => item === parent);
+    removeItem(node){
+      var _this = this
+      function findParent(node){
+        var parent = node.parentNode
+        var root = _this.el.find(item => item === parent)
+                            //return parent
         if (root) {
-          root.removeChild(node);
+          root.removeChild(node)
         } else {
-          findParent(parent);
+          findParent(parent)
         }
-      };
-      findParent(target);
+      }
+      findParent(node)
     }
+  }
+  //onload 所有内容都加载完
+  if (addEventListener) {
+    window.addEventListener('DOMContentLoaded', () => {
+      new List('.list')
+    })
+  } else {
+    window.attachEvent('onDOMContentLoaded', () => {
+        new List('.list')
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+  // class List {
+  //   constructor(sel) {
+  //     this.el = Array.from(document.querySelectorAll(sel))
+  //     let self = this
+  //     this.el.forEach(item => {
+  //       item.addEventListener('click', e => {
+  //         if (e.target.className.indexOf('del') > -1) {
+  //            console.log('e.target', e.target)
+  //           self.removeItem.call(self, e.target)
+  //         }
+  //       })
+  //     })
+  //   }
+  //
+  //   removeItem (target) {
+  //     let self = this;
+  //     let findParent = (node) => {
+  //       let parent = node.parentNode;
+  //       let root = self.el.find(item => item === parent);
+  //       if (root) {
+  //         root.removeChild(node);
+  //       } else {
+  //         findParent(parent);
+  //       }
+  //     };
+  //     findParent(target);
+  //   }
 
     // removeItem(target) {
     //   let self = this
@@ -82,11 +129,11 @@
     //
     //   findParent(target)
     // }
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    new List('.list')
-  })
+  // }
+  //
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   new List('.list')
+  // })
 </script>
 </body>
 </html>
