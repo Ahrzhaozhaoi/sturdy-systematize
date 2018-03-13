@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+/**
+ * 是否了解 vue 如何解析模板？三步
+ 模板就是一段字符串，非结构化的数据，没法分析。
+ 因此，第一步是将非结构化的模板字符串，
+ 转变成结构化的 JS 对象，抽象语法树，
+ 即 AST (abstract syntax tree)。
+ (1 分词： 将整个代码字符串分割成 语法单元数组。
+ 2 语义分析：在分词结果的基础之上分析 语法单元之间的关系。)
+ 其实就是一个 JS 对象，这样就结构化了。
+ 第二步，将 AST 转换成一个 render 函数，
+ 步骤是先转换为一段函数体的字符串，
+ 然后再用new Function(...)生成函数。
+ 第三部，渲染时执行 render 函数，
+ 返回虚拟 DOM 对象，
+ 然后执行虚拟 DOM 的patch方法，渲染成真正的 html 。
+https://www.imooc.com/article/23647
+
+* what:
+*  在下次 DOM 更新循环结束之后执行延迟回调。
+*  在修改数据之后立即使用这个方法，获取更新后的 DOM。
+*
+* why:
+*  Vue异步执行DOM更新
+*
+* when:
+* 1.created()中进行的DOM操作,
+*    要放在Vue.nextTick()中
+* 2.数据变化后执行的某个操作,
+*    该操作需要DOM更新,
+*    该操作要放到Vue.nextTick()中
+*
+*/
+</script>
+</body>
+</html>
