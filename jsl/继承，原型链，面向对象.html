@@ -36,7 +36,8 @@ console.log(new Animal(), new Animal2());
  * 借助构造函数实现继承
  * 核心代码：Parent.call(this) //apply
  * 原理：将父级构造函数运行时的this指向子级构造函数
- * 缺点：Parent原型对象上的属性方法不被继承，只实现了部分继承，只继承了构造函数的属性方法
+ * 缺点：Parent原型对象上的属性方法不被继承，
+ *      只实现了部分继承，只继承了构造函数的属性和方法
  */
 function Parent1 () {
     this.name = 'parent1';
@@ -54,7 +55,9 @@ console.log(new Child1(), new Child1().say());
  * 借助原型链实现继承
  * 核心代码：Child.prototype = new Parent()
  * 原理：子类的原型对象被父类的实例覆盖
- * 缺点：因为子类的实例共用了同一个原型对象，修改一个实例对象的属性，其他实例对象的属性也会改变，没有实现对象隔离
+ * 缺点：因为子类的实例共用了同一个原型对象，
+ *      修改一个实例对象的属性，其他实例对象的属性也会改变，
+ *      没有实现对象隔离
  */
 function Parent2 () {
     this.name = 'parent2';
@@ -94,8 +97,10 @@ console.log(s3.play, s4.play);
  * 组合继承的优化1
  * 让父类构造函数只执行一次
  * 核心代码：Child.prototype = Parent.prototype
- * 原理：父类构造函数体内的属性和方法，以及父类原型对象的属性和方法都能被拿到
- * 缺点：因为constructor属性是原型对象的属性，所以用constuctor属性无法判断实例是子类还是父类直接实例化的
+ * 原理：父类构造函数体内的属性和方法，
+ *      以及父类原型对象的属性和方法都能被拿到
+ * 缺点：因为constructor属性是原型对象的属性，
+ *      所以用constuctor属性无法判断实例是子类还是父类直接实例化的
  * @type {String}
  */
 function Parent4 () {

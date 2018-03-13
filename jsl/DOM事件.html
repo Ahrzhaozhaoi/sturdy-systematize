@@ -43,6 +43,25 @@
 *
 *  CustomEvent(弥补Event不能加数据)
 *  var customEvetn = new CustomEvent('custom',dataObj)
+*
+*3.1 这里的IE是IE11以下;
+*3.2 参数的差别: attachEvent()的第一个参数
+ * 比addEventListener()的事件名多一个"on"，
+*    且没有第三个参数，因为IE事件模型只支持冒泡事件流;
+*3.3 事件处理函数作用域的区别: IE中事件处理程序处于全局作用域，
+ * 其内的this会指向window;
+*而用DOM（0或2）级事件的事件处理程序的作用域是元素作用域，
+ * 其内的this指向其所属的元素
+*例: document.addEventListener("click", function(){
+*  if(this == document){
+*    alert("此时this指向document");
+*  }
+*}, false);
+*3.4 事件对象event的属性方法的差别
+*IE                    DOM
+*cancelBubble = true    stopPropagation() //停止冒泡
+*returnValue = false    preventDefault() //阻止元素默认事件
+*srcElement            target //事件目标
 */
 </script>
 </body>
