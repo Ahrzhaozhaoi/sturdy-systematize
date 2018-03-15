@@ -7,6 +7,11 @@
 <body>
 <script>
 /**
+ * 非结构化的模板字符串=>AST(分词，语义分析)
+ * AST=>render函数 (new Function())
+ * render()=>VirtualDOM
+ * VirtualDOM.patch()=>真正的html
+ *
  * 是否了解 vue 如何解析模板？三步
  模板就是一段字符串，非结构化的数据，没法分析。
  因此，第一步是将非结构化的模板字符串，
@@ -22,6 +27,7 @@
  然后执行虚拟 DOM 的patch方法，渲染成真正的 html 。
 https://www.imooc.com/article/23647
 
+ nextTick
 * what:
 *  在下次 DOM 更新循环结束之后执行延迟回调。
 *  在修改数据之后立即使用这个方法，获取更新后的 DOM。

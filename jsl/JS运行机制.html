@@ -46,7 +46,8 @@
 *  形成事件循环,异步方式返回结果给V8
 * V8将结果返回给客户
 *
-* process.nextTick,下一次主线程读取任务队列之间触发回调函数
+* process.nextTick,
+* 下一次主线程读取任务队列之间触发回调函数
 * setImmediate方法则是在当前"任务队列"的尾部添加事件
 */
 process.nextTick(function A() {
@@ -86,15 +87,19 @@ setTimeout(function () {
 /**
 *for循环是同步任务
 *
-*
 * 异步队列执行的时间：
-*    浏览器有个timer模块，异步函数体先放入timer模块中
-*    到时间后（0其实是4ms），timer模块把异步函数体扔到异步队列中
+*    浏览器有个timer模块，
+*    异步函数体先放入timer模块中
+*    到时间后（0其实是4ms），
+*    timer模块把异步函数体扔到异步队列中
 * 事件循环（event loop）：
-*    运行栈：执行同步任务，同步任务执行完后再去异步任务队列中取出函数体，并执行异步任务
-*    什么时候开启异步任务：setTimeout、setInterval
-*                        DOM事件
-*                        ES6中Promise
+*    运行栈：执行同步任务，
+*    同步任务执行完后再去异步任务队列中取出函数体，
+*    并执行异步任务
+*    什么时候开启异步任务：
+*    setTimeout、setInterval
+*    DOM事件
+*    ES6中Promise
 */
 
 </script>
