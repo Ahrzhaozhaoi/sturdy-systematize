@@ -15,18 +15,22 @@
 *   另一线程删除该节点，浏览器该以哪个线程为准
 *
 *how:实现单线程任务队列(主线程ECS,TQ)：
-*    ①同步任务在主线程上先排队执行,
- *    形成执行环境栈(ECS execution context stack)，
-*    ②异步任务的运行有了结果,
- *    就在任务队列(task queue先进先出)放入事件,暂时挂起
-*    ③ECS同步任务执行完,任务队列里的事件(callback)进入执行栈开始执行
-*    ④重复以上三步
+* ①同步任务在主线程上先排队执行,
+*    形成执行环境栈(ECS execution context stack)，
+* ②异步任务的运行有了结果,
+*    就在任务队列(task queue先进先出)放入事件,暂时挂起
+* ③ECS同步任务执行完,
+*    任务队列里的事件(callback)进入执行栈开始执行
+* ④重复以上三步
 *
 *Event Loop: 主线程从任务队列读取事件并循环的机制
 *
-* setTimeout(fn,0):ECS和TQ执行完才尽快执行 H5规定不低于4ms,老版本10ms
+* setTimeout(fn,0):
+* ECS和TQ执行完才尽快执行
+* H5规定不低于4ms,老版本10ms
 * DOM重新渲染16ms执行一次,所以
-* requestAnimationFrame()的效果要好于setTimeout()
+* requestAnimationFrame()的效果
+* 要好于setTimeout()
 *
 * 目前 JS 对于异步的解决方案有哪些
 * deferred （jQuery 或者 zepto 中）
