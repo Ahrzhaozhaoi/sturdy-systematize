@@ -44,6 +44,7 @@ class List {
     let findParent = function (node) {
       let parent = node.parentNode;
       let root = self.el.find(item => item === parent);
+      //返回匹配到的元素
       if (root) {
         root.removeChild(node);
       } else {
